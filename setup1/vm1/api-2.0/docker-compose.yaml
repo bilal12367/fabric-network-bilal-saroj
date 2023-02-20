@@ -1,0 +1,18 @@
+version: '3'
+
+networks:
+  test:
+
+services:
+  nodeapp:
+    build: .
+    image: testnode1
+    ports:
+      - 5000:5000
+    restart: always
+    networks:
+      - test
+    volumes:
+      - ./org1-wallet:/app/org1-wallet
+      - ./org2-wallet:/app/org2-wallet
+    
