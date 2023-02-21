@@ -169,14 +169,14 @@ Syntax for registering the peer, user and admin
 📦crypto-config
  ┗ 📂peerOrganizations
  ┃ ┗ 📂org1.example.com
- ┃ ┃ ┣ 📂ca
- ┃ ┃ ┣ 📂msp
- ┃ ┃ ┃ ┣ 📂cacerts
- ┃ ┃ ┃ ┣ 📂keystore
- ┃ ┃ ┃ ┣ 📂signcerts
- ┃ ┃ ┃ ┣ 📂tlscacerts
- ┃ ┃ ┃ ┣ 📂user
- ┃ ┃ ┗ 📂peers
+     ┣ 📂ca
+     ┣ 📂msp
+   ┃ ┃ ┣ 📂cacerts
+   ┃ ┃ ┣ 📂keystore
+   ┃ ┃ ┣ 📂signcerts
+   ┃ ┃ ┣ 📂tlscacerts
+   ┃ ┃ ┣ 📂user
+     ┗ 📂peers
 ```
 
 13. Generating peer msp
@@ -192,14 +192,21 @@ This will generate msp inside peer folder.
 ```
 📦crypto-config
  ┗ 📂peerOrganizations
- ┃ ┗ 📂org1.example.com
- ┃ ┃ ┣ 📂peers
- ┃ ┃ ┃ ┣ 📂peer0.org1.example.com
- ┃ ┃ ┃ ┃ ┣ 📂msp
- ┃ ┃ ┃ ┃ ┃ ┣ 📂cacerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂keystore
- ┃ ┃ ┃ ┃ ┃ ┣ 📂signcerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂user
+   ┗ 📂org1.example.com
+     ┣ 📂ca
+     ┣ 📂msp
+     ┣ 📂cacerts
+     ┣ 📂keystore
+     ┃ ┣ 📂signcerts
+     ┃ ┣ 📂tlscacerts
+     ┃ ┗ 📂user
+     ┗ 📂peers
+       ┗ 📂peer0.org1.example.com
+         ┗ 📂msp
+           ┣ 📂cacerts
+           ┣ 📂keystore
+           ┣ 📂signcerts
+           ┗ 📂user
 ```
 14. Generating peer tls
 
@@ -217,16 +224,27 @@ This will generate tls folder inside the peer directory.
 ```
 📦crypto-config
  ┗ 📂peerOrganizations
- ┃ ┗ 📂org1.example.com
- ┃ ┃ ┣ 📂peers
- ┃ ┃ ┃ ┣ 📂peer0.org1.example.com
- ┃ ┃ ┃ ┃ ┣ 📂msp
- ┃ ┃ ┃ ┃ ┗ 📂tls
- ┃ ┃ ┃ ┃ ┃ ┣ 📂cacerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂keystore
- ┃ ┃ ┃ ┃ ┃ ┣ 📂signcerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂tlscacerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂user
+   ┗ 📂org1.example.com
+     ┣ 📂ca
+     ┣ 📂msp
+     ┣ 📂cacerts
+     ┣ 📂keystore
+     ┃ ┣ 📂signcerts
+     ┃ ┣ 📂tlscacerts
+     ┃ ┣ 📂user
+     ┣ 📂peers
+     ┃ ┣ 📂peer0.org1.example.com
+     ┃ ┃ ┣ 📂msp
+     ┃ ┃ ┃ ┣ 📂cacerts
+     ┃ ┃ ┃ ┣ 📂keystore
+     ┃ ┃ ┃ ┣ 📂signcerts
+     ┃ ┃ ┃ ┣ 📂user
+     ┃ ┃ ┗ 📂tls           <=== tls folder generated
+     ┃ ┃   ┣ 📂cacerts
+     ┃ ┃   ┣ 📂keystore
+     ┃ ┃   ┣ 📂signcerts
+     ┃ ┃   ┣ 📂tlscacerts
+     ┃ ┃   ┗ 📂user
 ```
 
 15. Copy the certfiles and make it available inside tls folder of peer directory.
@@ -263,41 +281,41 @@ cp ${PWD}/../crypto-config/peerOrganizations/org1.../tls/keystore/* ${PWD}/../cr
 ```
 📦crypto-config
  ┗ 📂peerOrganizations
- ┃ ┗ 📂org1.example.com
- ┃ ┃ ┣ 📂ca
- ┃ ┃ ┣ 📂msp
- ┃ ┃ ┃ ┣ 📂cacerts
- ┃ ┃ ┃ ┣ 📂keystore
- ┃ ┃ ┃ ┣ 📂signcerts
- ┃ ┃ ┃ ┣ 📂tlscacerts
- ┃ ┃ ┃ ┣ 📂user
- ┃ ┃ ┣ 📂peers
- ┃ ┃ ┃ ┣ 📂peer0.org1.example.com
- ┃ ┃ ┃ ┃ ┣ 📂msp
- ┃ ┃ ┃ ┃ ┃ ┣ 📂cacerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂keystore
- ┃ ┃ ┃ ┃ ┃ ┣ 📂signcerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂user
- ┃ ┃ ┃ ┃ ┗ 📂tls
- ┃ ┃ ┃ ┃ ┃ ┣ 📂cacerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂keystore
- ┃ ┃ ┃ ┃ ┃ ┣ 📂signcerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂tlscacerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂user
- ┃ ┃ ┃ ┗ 📂peer1.org1.example.com
- ┃ ┃ ┃ ┃ ┣ 📂msp
- ┃ ┃ ┃ ┃ ┃ ┣ 📂cacerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂keystore10d9414f8c599e2ab67083bc9f512061c534d_sk
- ┃ ┃ ┃ ┃ ┃ ┣ 📂signcerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂user
- ┃ ┃ ┃ ┃ ┗ 📂tls
- ┃ ┃ ┃ ┃ ┃ ┣ 📂cacerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂keystore
- ┃ ┃ ┃ ┃ ┃ ┣ 📂signcerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂tlscacerts
- ┃ ┃ ┃ ┃ ┃ ┣ 📂user
- ┃ ┃ ┣ 📂tlsca
- ┃ ┃ ┣ 📂users
+   ┗ 📂org1.example.com
+     ┣ 📂ca
+     ┣ 📂msp
+     ┣ 📂cacerts
+     ┣ 📂keystore
+     ┃ ┣ 📂signcerts
+     ┃ ┣ 📂tlscacerts
+     ┃ ┣ 📂user
+     ┣ 📂peers
+     ┃ ┣ 📂peer0.org1.example.com
+     ┃ ┃ ┣ 📂msp
+     ┃ ┃ ┃ ┣ 📂cacerts
+     ┃ ┃ ┃ ┣ 📂keystore
+     ┃ ┃ ┃ ┣ 📂signcerts
+     ┃ ┃ ┃ ┣ 📂user
+     ┃ ┃ ┗ 📂tls
+     ┃ ┃   ┣ 📂cacerts
+     ┃ ┃   ┣ 📂keystore
+     ┃ ┃   ┣ 📂signcerts
+     ┃ ┃   ┣ 📂tlscacerts
+     ┃ ┃   ┗ 📂user
+     ┃ ┗ 📂peer1.org1.example.com
+     ┃   ┣ 📂msp
+     ┃   ┃ ┣ 📂cacerts
+     ┃   ┃ ┣ 📂keystore10d9414f8c599e2ab67083bc9f512061c534d_sk
+     ┃   ┃ ┣ 📂signcerts
+     ┃   ┃ ┣ 📂user
+     ┃   ┗ 📂tls
+     ┃     ┣ 📂cacerts
+     ┃     ┣ 📂keystore
+     ┃     ┣ 📂signcerts
+     ┃     ┣ 📂tlscacerts
+     ┃     ┣ 📂user
+     ┣ 📂tlsca
+     ┗ 📂users
 ```
 
 
