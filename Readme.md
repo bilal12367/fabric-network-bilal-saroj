@@ -246,7 +246,20 @@ cp ${PWD}/../crypto-config/peerOrganizations/org1.../tls/keystore/* ${PWD}/../cr
 ../tls/keystore/* ==> ../tls/server.key
 ```
 
+16. Copying certfiles from anchor peer to orgnaization folder.
 
+    *a.* Make the following directories
+    ```bash
+    mkdir ${PWD}/crypto-config/.../org1.example.com/msp/tlscacerts
+    mkdir ${PWD}/crypto-config/.../org1.example.com/tlsca
+    mkdir ${PWD}/crypto-config/.../ca
+    ```
+    *b.* Now copy these files to these directories
+    ```bash
+    cp peer0.org1.example.com/tls/tlscacerts/* /org1.example.com/msp/tlscacerts/ca.crt
+    cp peer0.org1.example.com/tls/tlscacerts/* /org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
+    cp peer0.org1.example.com/tls/cacerts/* /org1.example.com/ca/ca.org1.example.com-cert.pem
+    ```
 ```
 📦crypto-config
  ┗ 📂peerOrganizations
